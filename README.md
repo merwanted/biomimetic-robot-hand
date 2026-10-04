@@ -1,91 +1,92 @@
 <p align="center">
-  <a href="README.md">🇹🇷 <b>Türkçe</b></a> | <a href="README.en.md">🇬🇧 <b>English</b></a>
+  <a href="README.md">🇬🇧 <b>English</b></a> | <a href="README.tr.md">🇹🇷 <b>Türkçe</b></a>
 </p>
 
-# 🖐️ Biyomimetik Robot El & Telemetri Eldiveni
+# 🖐️ Biomimetic Robotic Hand & Telemetry Glove
 
 <div align="center">
 
-[![Field](https://img.shields.io/badge/Alan-Biyomedikal%20%26%20Robotik-blue?style=for-the-badge&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
+[![Field](https://img.shields.io/badge/Field-Biomedical%20%26%20Robotics-blue?style=for-the-badge&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
 [![Hardware](https://img.shields.io/badge/Platform-Arduino%20Uno%20%2F%20C%2B%2B-00979D?style=for-the-badge&logo=arduino&logoColor=white&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
-[![Event](https://img.shields.io/badge/Organizasyon-T%C3%9CB%C4%B0TAK%20Robotik%20Projesi-red?style=for-the-badge&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
-[![Status](https://img.shields.io/badge/Durum-Donan%C4%B1m%20Sergi%20Prototipi-success?style=for-the-badge&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
+[![Event](https://img.shields.io/badge/Organization-T%C3%9CB%C4%B0TAK%20Robotics%20Project-red?style=for-the-badge&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
+[![Status](https://img.shields.io/badge/Status-Hardware%20Exhibition%20Prototype-success?style=for-the-badge&labelColor=1a1a1a)](https://github.com/merwanted/biomimetic-robot-hand)
 
 <p align="center">
-  <b>TÜBİTAK Robotik Projeleri Kapsamında Geliştirilmiş Donanım & Gömülü Yazılım Prototipi</b><br/>
-  <i>Kullanıcının el hareketlerini flex sensörlü eldivenle algılayıp tendon mekanizmalı 5 parmaklı robotik ele aktaran tele-manipülasyon sistemi.</i>
+  <b>Embedded Hardware & Firmware Prototype Developed for the TÜBİTAK Robotics Exhibition</b><br/>
+  <i>A low-latency tele-manipulation system tracking human finger articulation via a sensorized glove to actuate a 5-digit tendon-driven robotic hand.</i>
 </p>
 
 </div>
 
 ---
 
-> ⚠️ **Proje Durumu:** Bu depo, **TÜBİTAK Robotik Projeleri / Bilim Sergisi** kapsamında tasarlanmış ve sunulmuş **çalışan bir donanım prototipidir (Presentation & Research Prototype)**. Ticari son kullanıcı ürünü değil, tele-robotik ve biyomedikal protez prensiplerini kanıtlayan bir mühendislik çalışmasıdır.
+> ⚠️ **Project Status:** This repository contains a **functional hardware prototype (Presentation & Research Prototype)** engineered for the **TÜBİTAK Robotics Exhibition**. It serves as an applied engineering proof of concept in tele-robotics and biomimetic prosthetics rather than a commercial medical device.
 
 ---
 
-## 📌 Proje Özeti & Biyomedikal Motivasyon
+## 📌 Project Overview & Biomedical Motivation
 
-### Amaç
-İnsan elinin doğal hareketlerini düşük gecikmeyle (<100ms) algılayarak uzaktan kontrol edilen biyomimetik bir robotik ele aktarmak.
+### Objective
+Capture natural human hand articulation with low latency (<100ms) and mirror kinematic finger movements onto a remotely controlled biomimetic robotic effector.
 
-### Uygulama Alanları:
-1. **Protez & Biyomedikal Teknolojisi:** Uzuv kaybı yaşayan bireyler için doğal motor komutlarıyla kontrol edilebilen mekanik el protezleri.
-2. **Tehlikeli Madde Yönetimi:** Radyoaktif, kimyasal veya patlayıcı ortamlarda operatörün güvenli mesafeden hassas manipülasyon yapabilmesi.
-3. **Tele-Operasyon:** Arama-kurtarma robotlarında uzaktan el hareketleriyle nesne kavrama.
+### Application Domains:
+1. **Prosthetics & Rehabilitation:** Assistive mechanical terminal devices controlled via natural biomechanical inputs for individuals with upper-limb absence.
+2. **Hazardous Material Handling:** Enabling operators to conduct fine manipulation tasks from a safe perimeter in radioactive, toxic, or explosive environments.
+3. **Tele-Operation & Search and Rescue:** Remote object acquisition for exploration and disaster response rovers.
 
 ---
 
-## 🏗️ Mekanik ve Biyomimetik Çalışma Mantığı
+## 🏗️ Mechanical & Biomimetic Kinematics
 
-Robot el, insan elinin anatomik çalışma prensibini taklit eder:
+The robotic hand replicates human musculoskeletal biomechanics:
 
 ```
-[İnsan Eli / Eldiven] ──► [Flex Sensörler] ──► [Voltaj Bölücü Devre]
-                                                         │
-                                                         ▼
-[Robotik Parmaklar] ◄── [Tendon İpleri] ◄── [Servolar] ◄── [Arduino EMA Filtresi]
+[Human Hand / Glove] ──► [Flex Sensors] ──► [Voltage Divider Circuit]
+                                                       │
+                                                       ▼
+[Robotic Digits] ◄── [Tendon Lines] ◄── [Servos] ◄── [Arduino EMA Filter]
 ```
 
-* **Fleksiyon (Bükülme):** Kullanıcı parmağını büktüğünde flex sensörün direnci artar. Arduino bu değişimi algılar ve ilgili servo motoru döndürerek parmak eklemlerine bağlı tendon ipini çeker.
-* **Ekstansiyon (Geri Açılma):** Kullanıcı elini açtığında servo motor ters yöne döner ve parmak sırtındaki yay/elastik bantlar parmağı orijinal dik pozisyonuna geri çeker.
+* **Flexion (Curling):** As the operator flexes a finger, sensor electrical resistance rises. The microcontroller registers the analog voltage delta and drives the corresponding servo horn to tension the tendon wire routed through anatomical finger joints.
+* **Extension (Releasing):** When the operator straightens their fingers, the servo rotates in reverse, allowing dorsal elastic bands/springs to return each finger to its neutral upright stance.
 
 ---
 
-## ⚙️ Sinyal İşleme & Titreme Engelleme (EMA Filtresi)
+## ⚙️ Signal Processing & Anti-Jitter Filtering (EMA Filter)
 
-Analog flex sensörler ortam gürültüsünden ve kablo hareketlerinden dolayı gürültülü (jittery) sinyal üretebilir. Bu durum servoların sürekli titremesine ve aşırı ısınmasına yol açar.
+Analog flex sensors are vulnerable to electromagnetic noise, wiring flexure, and contact jitter. Unfiltered analog signals lead to servo chatter and motor overheating.
 
-Yazılımda uygulanan **Exponential Moving Average (EMA)** filtreleme algoritması ile ani voltaj sıçramaları süzülür:
+An onboard **Exponential Moving Average (EMA)** algorithm filters voltage transients in real-time:
 
-$$\text{Değer}_{\text{yeni}} = (\alpha \times \text{Ham}) + ((1 - \alpha) \times \text{Değer}_{\text{önceki}})$$
+$$\text{Value}_{\text{current}} = (\alpha \times \text{Raw}) + ((1 - \alpha) \times \text{Value}_{\text{previous}})$$
 
-Burada $\alpha = 0.25$ seçilerek tepki süresi ile sinyal pürüzsüzlüğü arasında ideal denge sağlanmıştır.
+An alpha factor of $\alpha = 0.25$ provides an optimal compromise between low latency response and smooth servo dampening.
 
 ---
 
-## 📂 Depo Yapısı
+## 📂 Repository Structure
 
 ```
 biomimetic-robot-hand/
 ├── src/
-│   ├── robot_hand.ino       # 5 parmak gerçek zamanlı kontrol & EMA filtreleme firmware'i
-│   └── calibration.ino     # Kişiye özel el boyutu için otomatik kalibrasyon aracı
+│   ├── robot_hand.ino       # 5-finger real-time servo control & EMA filtering firmware
+│   └── calibration.ino     # Interactive min/max calibration utility for individual hand sizes
 ├── hardware/
-│   └── circuit_schematic.md # Pin bağlantıları, voltaj bölücü ve ortak GND rehberi
-└── README.md
+│   └── circuit_schematic.md # Pinout mappings, voltage divider reference, and common GND guide
+├── README.md                # English Documentation (Default)
+└── README.tr.md             # Turkish Documentation
 ```
 
 ---
 
-## 🚀 Kurulum & Çalıştırma
+## 🚀 Setup & Execution Guide
 
-1. Devre bağlantılarını [`hardware/circuit_schematic.md`](hardware/circuit_schematic.md) dosyasındaki şemaya göre yapın.
-2. `src/calibration.ino` dosyasını Arduino Uno'ya yükleyerek Seri Monitör üzerinden kendi elinizin min/max bükülme değerlerini tespit edin.
-3. Elde ettiğiniz değerleri `src/robot_hand.ino` dosyasındaki kalibrasyon dizisine yapıştırın ve ana firmware'i yükleyin.
+1. Assemble wiring according to the schematic in [`hardware/circuit_schematic.md`](hardware/circuit_schematic.md).
+2. Flash `src/calibration.ino` onto the Arduino Uno to read your hand's minimum (flat) and maximum (bent) ADC values via the Serial Monitor.
+3. Update the calibration arrays in `src/robot_hand.ino` with your measured thresholds, then upload the primary control firmware.
 
 ---
 
-## 👨💻 Geliştirici & Proje Bilgisi
-* **Geliştirici:** Mert Özemir (Merwanted)
-* **Kapsam:** TÜBİTAK Destekli Robotik Projeleri / Sergi Prototipi
+## 👨💻 Developer & Attribution
+* **Developer:** Mert Özemir (Merwanted)
+* **Scope:** TÜBİTAK Supported Robotics Project / Exhibition Prototype
