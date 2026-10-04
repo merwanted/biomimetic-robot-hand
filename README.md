@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="README.md">🇹🇷 <b>Türkçe</b></a> | <a href="README.en.md">🇬🇧 <b>English</b></a>
+</p>
+
 # 🖐️ Biyomimetik Robot El & Telemetri Eldiveni
 
 <div align="center">
